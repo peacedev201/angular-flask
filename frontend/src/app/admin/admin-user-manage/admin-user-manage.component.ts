@@ -53,6 +53,7 @@ export class AdminUserManageComponent implements OnInit {
         console.log($(".notification"), i)
         if(i == 0){
           $(".notification").text('');
+          $("#new_user_request").css("display", 'none');
         }
         else{
           $(".notification").text(i);

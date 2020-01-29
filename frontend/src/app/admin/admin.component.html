@@ -24,7 +24,7 @@
           </a>
           <ul #notificationList *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="notificationButton">
             <li role="menuitem" *ngIf=check_notification>
-              <a [routerLink]="'/admin/users'" class="dropdown-item" *ngIf=check_notification>
+              <a [routerLink]="'/admin/users'" class="dropdown-item" *ngIf=check_notification id = "new_user_request">
                 New user request
                 <!-- <div class="media">
                   <div class="avatar avatar-sm avatar-online"><img src="/assets/img/img6.jpg" class="rounded-circle"
