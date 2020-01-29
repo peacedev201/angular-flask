@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">User Approve List</h3>
+    </div>
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Avatar</th>
+            <th scope="col">Name</th>
+            <th scope="col">Editor</th>
+            <th scope="col">Modifed Date</th>
+            <th scope="col">Status</th>
+            <th scope="col" *ngIf="authService.isAdminUser()">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let person of orgPersons; let idx = index">
+            <th scope="row">{{idx + 1}}</th>
+            <td><img [src]="survey.getBaseImageUrl() + person.imageurl" style="width:50px;height:50px"></td>
+            <td>
+              <div>{{person.name}}</div>
+            </td>
+            <td>
+              <div>{{person.editor}}</div>
+            </td>
+            <td>
+              <div>{{person.updatedtime}}</div>
+            </td>
+            <td>
+              <div>{{person.status}}</div>
+            </td>
+            <td *ngIf="authService.isAdminUser()"><button [routerLink]="['/admin/detail-hist',person.userid]"
+                class="btn btn-info btn-sm">
+                More...
+              </button></td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

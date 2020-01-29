@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center">
+        User Management
+      </h1>
+    </div>
+    <div class="col-12" *ngIf="msgAlert && msgAlert.message">
+      <p>
+        <ngb-alert [type]="msgAlert.type" (close)="closeAlert(msgAlert)">{{ msgAlert.message }}</ngb-alert>
+      </p>
+    </div>
+    <div class="col-12 border px-5" *ngIf="userlist">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Username</th>
+            <th scope="col">Role</th>
+            <th scope="col" class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let user of userlist; let idx=index">
+          <th scope="row">{{idx + 1}}</th>
+          <td>{{user.email}}</td>
+          <td>{{user.name}}</td>
+          <td>
+            <select class="custom-select" id="inputGroupSelect02" [(ngModel)]="user.role">
+              <option *ngFor="let uRole of USER_ROLE" [value]="uRole.value">{{uRole.label}}</option>
+            </select>
+          </td>
+          <td class="d-flex flex-row justify-content-around">
+            <button class="btn btn-sm btn-primary" (click)="updateUserInformation(user)">
+              Update
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deleteUserInformation(user)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

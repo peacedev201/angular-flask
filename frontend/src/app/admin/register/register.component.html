@@ -1,0 +1,57 @@
+<mat-card>
+  <mat-card-title>Register</mat-card-title>
+  <mat-card-content>
+    <p *ngIf="alertService.getAlert() | async; let user">
+      {{user|json}}
+    </p>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Email" formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email.errors }" />
+          <div *ngIf="submitted && registerForm?.controls?.email?.errors" class="invalid-feedback">
+            <div *ngIf="registerForm?.controls?.email?.errors?.required">Email is required</div>
+          </div>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Username" formControlName="username"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.username.errors }" />
+          <div *ngIf="submitted && registerForm?.controls?.username?.errors" class="invalid-feedback">
+            <div *ngIf="registerForm?.controls?.username?.errors?.required">Username is required</div>
+          </div>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }" />
+          <div *ngIf="submitted && registerForm?.controls?.password?.errors" class="invalid-feedback">
+            <div *ngIf="registerForm?.controls?.password?.errors?.required">Password is required</div>
+          </div>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Confirm Password" formControlName="rpassword"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.rpassword.errors }" />
+          <div *ngIf="submitted && registerForm?.controls?.rpassword?.errors" class="invalid-feedback">
+            <div *ngIf="registerForm?.controls?.rpassword?.errors?.required">Confirm is required</div>
+          </div>
+        </mat-form-field>
+      </p>
+
+      <p *ngIf="error" class="error">
+        {{error}}!
+      </p>
+
+      <div class="button">
+        <button type="submit" mat-raised-button color="accent">Register</button>
+        <span style='padding:10px'> </span>
+        <button type="button" [routerLink]="'/login'" mat-raised-button>Login</button>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>
