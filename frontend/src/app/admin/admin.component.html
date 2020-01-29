@@ -23,16 +23,17 @@
             <span class="caret"></span>
           </a>
           <ul #notificationList *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="notificationButton">
-            <li role="menuitem">
-              <a href="" class="dropdown-item">
-                <div class="media">
+            <li role="menuitem" *ngIf=check_notification>
+              <a [routerLink]="'/admin/users'" class="dropdown-item" *ngIf=check_notification>
+                New user request
+                <!-- <div class="media">
                   <div class="avatar avatar-sm avatar-online"><img src="/assets/img/img6.jpg" class="rounded-circle"
                       alt=""></div>
                   <div class="media-body mg-l-15">
                     <p>Congratulate <strong>Socrates Itumay</strong> for work anniversaries</p>
                     <span>Mar 15 12:32pm</span>
-                  </div><!-- media-body -->
-                </div><!-- media -->
+                  </div>
+                </div> -->
               </a>
             </li>
           </ul>

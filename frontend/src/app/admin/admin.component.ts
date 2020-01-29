@@ -14,6 +14,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
   notification
+  check_notification=false
 
   sideBar = [
     { url: '/admin/dashboard', label: 'Dashboard', role: 'editor' },
@@ -43,10 +44,17 @@ export class AdminComponent implements OnInit, OnDestroy {
           }
         });
         this.notification = i
+        this.check_notification = true;
+        if(i==0){
+          this.check_notification = false;
+        }
       }, (err) => {
       });
       if(localStorage.getItem("currentUser")){
         this.notification = localStorage.getItem("notification");
+        if(this.notification !=""){
+          this.check_notification = true;
+        }
       }
     }
   }
