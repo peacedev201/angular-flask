@@ -47,6 +47,7 @@ export class AdminComponent implements OnInit, OnDestroy {
         this.check_notification = true;
         if(i==0){
           this.check_notification = false;
+          this.notification = '';
         }
       }, (err) => {
       });
